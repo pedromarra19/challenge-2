@@ -15,6 +15,8 @@ import {Inter_200ExtraLight} from '@expo-google-fonts/inter'
 
 import Footer from '../../components/Footer'
 
+import Input from '../../components/Input'
+
 
 export default function SignUp() {
   
@@ -69,46 +71,32 @@ export default function SignUp() {
 
       <View style={styles.inputContainer}>
         
-        <View style={[styles.inputStyle, {borderColor: errorMail ? '#FF4B4B' : '#656262'}, {borderWidth: 0.5}]}>
-
-          <Image  style={styles.inputIcon} source={require('../../assets/mail.png')}/>
-          <TextInput
-            placeholder="Your email"
-            style={styles.input}
-            placeholderTextColor="#A8A8A8"
-            value={email}
-            onChangeText={setEmail}
+        <Input
+            placeholderContent="Your email"
+            content={email}
+            setContent={setEmail}
+            error={errorMail}
+            icon={require("../../assets/mail.png")}
+            warning="Please enter a valid email address"
           />
-          <Text style={[styles.warning, {color: errorMail ? '#FF4B4B' : '#2D2D2D'}]}>
-            Please enter a valid amail address.</Text>
-        </View>
 
-        <View style={[styles.inputStyle, {borderColor: errorUser? '#FF4B4B' : '#656262'}, {borderWidth: 0.5}]}>
-          <Image  style={styles.inputIcon} source={require('../../assets/user.png')}/>
-          <TextInput
-            placeholder="username"
-            style={styles.input}
-            placeholderTextColor="#A8A8A8"
-            value={username}
-            onChangeText={setUsername}
-          />
-          <Text style={[styles.warning, {color: errorUser ? '#FF4B4B' : '#2D2D2D'}]}>
-            Please enter a valid username.</Text>
-        </View>
+          <Input
+            placeholderContent="username"
+            content={username}
+            setContent={setUsername}
+            error={errorUser}
+            icon={require("../../assets/user.png")}
+            warning="Please enter a valid username."
+          /> 
 
-        <View style={[styles.inputStyle, {borderColor: errorPassword ? '#FF4B4B' : '#656262'}, {borderWidth: 0.5}]}>
-          <Image  style={styles.inputIcon} source={require('../../assets/lock.png')}/>
-          <TextInput
-            placeholder="Your Password"
-            style={styles.input}
-            placeholderTextColor="#A8A8A8"
-            secureTextEntry={true}
-            value={password}
-            onChangeText={setPassword}
-          />
-            <Text style={[styles.warning, {color: errorPassword ? '#FF4B4B' : '#2D2D2D'}]}>
-            Please enter a valid password.</Text>
-        </View>
+          <Input
+            placeholderContent="Your password"
+            content={password}
+            setContent={setPassword}
+            error={errorPassword}
+            icon={require("../../assets/lock.png")}
+            warning="Please enter a valid password."
+          />     
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>CREATE ACCOUNT</Text>
@@ -143,23 +131,7 @@ const styles = StyleSheet.create({
     paddingVertical: 32,
     paddingHorizontal: 14,
   },
-  inputStyle:{
-    flexDirection: 'row',
-    width: '95%',
-    height: 40,
-    backgroundColor: '#656262',
-    marginBottom: 20,
-    borderRadius: 30,
-    paddingHorizontal: 8,
-  },
-  input:{
-    flexDirection: 'row',
-    width: '90%',
-    height: 40,
-    paddingLeft: 35,
-    color: '#A8A8A8',
-    fontFamily: 'Inter_200ExtraLight',
-  },
+
   button:{
     width: '95%',
     height: 40,
@@ -174,19 +146,4 @@ const styles = StyleSheet.create({
     color: '#DBDBDB',
     fontFamily: 'Inter_200ExtraLight'
   },
-  inputIcon:{
-    position: 'absolute',
-    left: 15,
-    top: 10,
-    width: 20,
-    height: 20,
-    resizeMode: 'contain'
-  },
-  warning:{
-    position: 'absolute',
-    left: 15,
-    top: 40,
-    fontSize: 10,
-    fontFamily: 'Inter_200ExtraLight'
-  }
 })
