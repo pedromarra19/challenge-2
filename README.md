@@ -31,3 +31,4 @@ whether the email and password actually exist.
 9. Do not submit the entire project at once and not just with one branch. Each
 screen needs to have at least one branch.
 
+Link to the prototype: https://www.figma.com/file/9VfFd73WIMmIRAUeRvqxEN/Desafio---PB?t=Y8vJcUhE5VewN5zk-0
