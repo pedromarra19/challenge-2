@@ -7,50 +7,64 @@ import {
   TextInput, 
   TouchableOpacity, 
 } from 'react-native';
-import {useFonts} from 'expo-font'
 
+
+import {useFonts} from 'expo-font'
 import {Khula_300Light} from '@expo-google-fonts/khula'
 import {Inter_200ExtraLight} from '@expo-google-fonts/inter'
 
 import Footer from '../../components/Footer'
-
 import Input from '../../components/Input'
+import CheckBox from '../../components/CheckBox'
 
-import { AntDesign } from '@expo/vector-icons'
-
+import { AntDesign } from '@expo/vector-icons';
 
 export default function SignUp(props) {
   
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const[isSelected, setSelection] = useState(false)
 
   const [errorMail, setErrorMail] = useState(false)
+  const [errorUser, setErrorUser] = useState(false)
   const [errorPassword, setErrorPassword] = useState(false)
+  const [errorCheckBox, setErrorCheckBox] = useState(false)
+
 
 
   function handleLogin(){
-    if(email == '' || password == ''){
+
+    if(email == '' || username == '' || password == '' || isSelected == false){
 
         if(email == ''){
           setErrorMail(true)
         }
         else{setErrorMail(false)}
         
+        if (username == ''){
+          setErrorUser(true)
+        }
+        else{setErrorUser(false)}
+        
         if (password == ''){
           setErrorPassword(true)
         }
         else{setErrorPassword(false)}
         
+        if (isSelected == false){
+          setErrorCheckBox(true)
+        }
+        else{setErrorCheckBox(false)}
     }
-    else{ props.navigation.navigate("Home") }
-
+  else{props.navigation.navigate("Home")}
     return;
   }
 
-  function signUpScreen(){
-    props.navigation.navigate("SignUp")
+  function signInScreen(){
+    props.navigation.navigate("SignIn")
     return;
-  }
+}
 
     const [fontLoaded] = useFonts({
       Khula_300Light,
@@ -62,13 +76,16 @@ export default function SignUp(props) {
     }
 
 
-
  
   return (
     
     <View style={styles.container}>
 
-      <Text style={styles.title}>WELCOME</Text>
+      <TouchableOpacity style={styles.arrow} onPress={signInScreen}>
+        <AntDesign  name="arrowleft" size={40} color='#D78F3C' />
+      </TouchableOpacity>
+
+      <Text style={styles.title}>SIGN UP</Text>
 
       <View style={styles.inputContainer}>
         
@@ -82,23 +99,38 @@ export default function SignUp(props) {
           />
 
           <Input
+            placeholderContent="username"
+            content={username}
+            setContent={setUsername}
+            error={errorUser}
+            icon={require("../../assets/user.png")}
+            warning="Please enter a valid username."
+          /> 
+
+          <Input
             placeholderContent="Your password"
             content={password}
             setContent={setPassword}
             error={errorPassword}
             icon={require("../../assets/lock.png")}
             warning="Please enter a valid password."
+          />
+
+          <CheckBox
+            setValue={isSelected}
+            setValueChange={setSelection}
+            error={errorCheckBox}
           />     
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>LOGIN</Text>
-            
+            <Text style={styles.buttonText}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
       </View>
 
       <Footer 
-        textButton="Sign Up"
-        setOnPress={signUpScreen}/>
+        textButton="Sign In"
+        setOnPress={signInScreen}
+      />
  
     </View>
   );
@@ -111,8 +143,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#2D2D2D'
   },
+  arrow:{
+    position: 'absolute',
+    top: 55,
+    left: 15
+  },
   title:{
-    marginBottom: 100,
+    marginTop: 50,
+    marginBottom: 80,
     fontFamily: 'Khula_300Light',
     color: '#D78F3C',
     fontSize: 36,
@@ -121,10 +159,10 @@ const styles = StyleSheet.create({
   
   inputContainer:{
     width: '95%',
-    alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 32,
     paddingHorizontal: 14,
+    alignItems: 'center'
   },
 
   button:{
@@ -133,7 +171,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#D78F3C',
     borderRadius: 30,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 40,
+    margin:60
   },
   buttonText:{
     fontSize: 16,
@@ -141,4 +181,5 @@ const styles = StyleSheet.create({
     color: '#DBDBDB',
     fontFamily: 'Inter_200ExtraLight'
   },
+
 })

@@ -4,13 +4,14 @@ import {
     View,
     Text,
     Image,
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
  } from 'react-native';
 
  import {useFonts, Inter_200ExtraLight} from '@expo-google-fonts/inter'
 
 
- export default function Footer(){
+ export default function Footer({textButton, setOnPress}, props){
 
     const [fontLoaded] = useFonts({
         Inter_200ExtraLight,
@@ -21,40 +22,44 @@ import {
     }
 
 
-        return(
-            <View style={styles.container}>
-                <View style={styles.rowContainer}>
-                    <Text style={styles.footer}>Don't have an account? 
-                        <Text style={styles.signUp}> Sign Up</Text>
-                    </Text>
-                </View>
+    return(
+        <View style={styles.container}>
+            <View style={styles.border}/>
+
+            <View style={styles.textContainer}>
+                <Text style={styles.footer}>Don't have an account? </Text>
+                <TouchableOpacity onPress={setOnPress}><Text style={styles.signUp}>{textButton}</Text></TouchableOpacity>
             </View>
-        )
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
     container:{
-        padding: 10,
-        borderTopWidth: 0.5,
-        paddingHorizontal: 100,
-        borderColor: '#D78F3C',
+        flex: 1,
         position: 'absolute',
-        bottom: 0
+        bottom: 0,
+        alignItems: 'center',  
     },
-    rowContainer:{
+    border:{
+        borderTopWidth: 0.3,
+        borderColor: '#D78F3C',
+        paddingHorizontal: 200
+    },
+    textContainer:{
         flexDirection: 'row',
-        alignItems: 'center'
+        padding: 10
     },
     footer:{
-        color: '#000',
         height: 40,
-        fontSize: 30,
         fontFamily: 'Inter_200ExtraLight',
         fontSize: 16,
         color: '#F5F5F5',
     },
     signUp:{
         color: '#D78F3C',
+        fontSize: 16,
+        fontFamily: 'Inter_200ExtraLight',
     }
     
 })

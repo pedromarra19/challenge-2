@@ -28,7 +28,7 @@ export default function SignIn( {placeholderContent, content, setContent, error,
  
   return (
     
-    <View style={[styles.inputStyle, {borderColor: error ? '#FF4B4B' : '#656262'}, {borderWidth: 0.5}]}>
+    <View style={[styles.inputStyle, {borderColor: error ? '#FF4B4B' : '#2D2D2D'}, {borderWidth: 0.5}]}>
           <Image  style={styles.inputIcon} source={icon}/>
           <TextInput
             placeholder={placeholderContent}
