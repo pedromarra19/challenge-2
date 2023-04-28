@@ -16,16 +16,14 @@ import Footer from '../../components/Footer'
 
 import Input from '../../components/Input'
 
-import { AntDesign } from '@expo/vector-icons'
 
-
-export default function SignUp(props) {
+export default function SignIp(props) {
   
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState<String>('')
+  const [password, setPassword] = useState<String>('')
 
-  const [errorMail, setErrorMail] = useState(false)
-  const [errorPassword, setErrorPassword] = useState(false)
+  const [errorMail, setErrorMail] = useState<Boolean>(false)
+  const [errorPassword, setErrorPassword] = useState<Boolean>(false)
 
 
   function handleLogin(){
@@ -47,7 +45,7 @@ export default function SignUp(props) {
     return;
   }
 
-  function signUpScreen(){
+  function signUpScreen<VoidFunction>(){
     props.navigation.navigate("SignUp")
     return;
   }

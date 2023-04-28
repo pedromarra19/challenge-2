@@ -6,40 +6,46 @@ import {
   Image, 
   TouchableOpacity,
   FlatList,
-  ScrollView 
+  SafeAreaView 
 } from 'react-native';
+
 
 import {useFonts} from 'expo-font'
 import {Inter_200ExtraLight} from '@expo-google-fonts/inter'
 
+interface items {
+    id: string;
+}
 
-const items=[
-    {
-        id: '01'
-    },
-    {
-        id: '02'
-    },
-    {
-        id: '03'
-    },
-    {
-        id: '04'
-    },
-    {
-        id: '05'
-    },
-    {
-        id: '06'
-    },
-    {
-        id: '07'
-    },
-    {
-        id: '08'
-    }
 
-]
+const itemsData = {
+        items:[
+        {
+            id: '1'
+        },  
+        {
+            id: '2'
+        },
+        {
+            id: '3'
+        },
+        {
+            id: '4'
+        },
+        {
+            id: '5'
+        },
+        {
+            id: '6'
+        },
+        {
+            id: '7'
+        },
+        {
+            id: '8'
+        }
+    ]
+}
 
 
 export default function Home(){
@@ -55,17 +61,19 @@ export default function Home(){
     return(
         <View style={styles.container}>
             <Text style={styles.title}>HOME</Text>   
-            <ScrollView showsVerticalScrollIndicator={false}>       
+            <SafeAreaView style={{flex: 1}}>       
                 <View style={styles.list}>
                     <FlatList
-                        data={items}
+
+                        data={itemsData.items}
                         keyExtractor={item=>item.id}
                         renderItem={({item})=><TouchableOpacity style={styles.button}/>}
                         numColumns={2}
+                        onEndReachedThreshold={0.1}
                         showsVerticalScrollIndicator={false}
                         />
                 </View>
-            </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }

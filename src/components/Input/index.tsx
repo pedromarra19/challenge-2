@@ -14,7 +14,7 @@ import {Inter_200ExtraLight} from '@expo-google-fonts/inter'
 
 
 
-export default function SignIn( {placeholderContent, content, setContent, error, icon, warning}) {
+export default function Input ( {placeholderContent, content, setContent, error, icon, warning}) {
 
     const [fontLoaded] = useFonts({
       Inter_200ExtraLight
@@ -23,7 +23,6 @@ export default function SignIn( {placeholderContent, content, setContent, error,
     if(!fontLoaded){
       return null;
     }
-    console.log(icon)
 
  
   return (

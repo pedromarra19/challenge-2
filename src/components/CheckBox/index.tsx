@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {SetStateAction, useState} from 'react';
 import {
   View, 
   Text, 
@@ -25,7 +25,7 @@ export default function CheckBox({setValue, setValueChange, error}){
                 style={[styles.checkBox, {borderColor: error ? '#FF4B4B' : '#2D2D2D'}, {borderWidth: 0.5}]}
                 value={setValue} 
                 onValueChange={setValueChange}
-                color={setValue ? '#D78F3C' : undefined}
+                color={setValue ? '#D78F3C' : undefined} 
             />
             <Text style={styles.description}>Agree To <Text style={styles.underlined}>Terms And Conditions</Text>
             </Text>

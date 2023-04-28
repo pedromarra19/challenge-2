@@ -21,15 +21,15 @@ import { AntDesign } from '@expo/vector-icons';
 
 export default function SignUp(props) {
   
-  const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const[isSelected, setSelection] = useState(false)
+  const [email, setEmail] = useState<String>('')
+  const [username, setUsername] = useState<String>('')
+  const [password, setPassword] = useState<String>('')
+  const[isSelected, setSelection] = useState<Boolean>(false)
 
-  const [errorMail, setErrorMail] = useState(false)
-  const [errorUser, setErrorUser] = useState(false)
-  const [errorPassword, setErrorPassword] = useState(false)
-  const [errorCheckBox, setErrorCheckBox] = useState(false)
+  const [errorMail, setErrorMail] = useState<Boolean>(false)
+  const [errorUser, setErrorUser] = useState<Boolean>(false)
+  const [errorPassword, setErrorPassword] = useState<Boolean>(false)
+  const [errorCheckBox, setErrorCheckBox] = useState<Boolean>(false)
 
 
 
@@ -61,7 +61,7 @@ export default function SignUp(props) {
     return;
   }
 
-  function signInScreen(){
+  function signInScreen<VoidFunction>(){
     props.navigation.navigate("SignIn")
     return;
 }
