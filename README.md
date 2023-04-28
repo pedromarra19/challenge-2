@@ -1,3 +1,3 @@
-![](https://user-images.githubusercontent.com/69323457/235226951-0396c817-8124-49db-9820-93a4ae0dd3a4.jpg)
+![](https://user-images.githubusercontent.com/69323457/235227948-91f312ef-2294-4193-98c9-44fac38c5806.png)
 # Chalange 2
 
